@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>مهسا بهداروندی | مشاور و کارشناس املاک و مستغلات</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Tahoma, sans-serif;
+    }
+    body {
+      background: linear-gradient(rgba(11, 15, 25, 0.88), rgba(11, 15, 25, 0.94)), 
+                  url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
+      background-size: cover;
+      color: #f1f5f9;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 20px 14px;
+    }
+    .container {
+      width: 100%;
+      max-width: 430px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .card-box {
+      background: rgba(20, 28, 46, 0.85);
+      backdrop-filter: blur(14px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+      overflow: hidden;
+      position: relative;
+    }
+    
+    /* بنر و پروفایل */
+    .profile-card {
+      padding: 0 0 20px 0;
+      text-align: center;
+    }
+    .banner-img {
+      width: 100%;
+      height: 165px;
+      background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.15), #141c2e), 
+                        url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1000&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+    .avatar-wrapper {
+      margin-top: -50px;
+      margin-bottom: 12px;
+    }
+    .avatar {
+      width: 96px;
+      height: 96px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #d97706, #f59e0b);
+      color: #0b0f19;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 32px;
+      font-weight: 800;
+      border: 4px solid #141c2e;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.5);
+    }
+    h1 {
+      font-size: 21px;
+      font-weight: 700;
+      color: #ffffff;
+      margin-bottom: 4px;
+    }
+    .role-title {
+      font-size: 14px;
+      color: #f59e0b;
+      font-weight: 600;
+      margin-bottom: 6px;
+    }
+    .phone-display {
+      direction: ltr;
+      font-size: 14px;
+      font-weight: 700;
+      color: #38bdf8;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+    .bio-text {
+      font-size: 12.5px;
+      color: #94a3b8;
+      line-height: 1.7;
+      padding: 0 20px;
+      margin-bottom: 18px;
+    }
+
+    /* دکمه ذخیره در مخاطبین */
+    .save-btn {
+      width: calc(100% - 40px);
+      margin: 0 auto;
+      padding: 13px;
+      background: linear-gradient(135deg, #f59e0b, #d97706);
+      color: #0b0f19;
+      border: none;
+      border-radius: 12px;
+      font-weight: 800;
+      font-size: 14px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: opacity 0.2s;
+    }
+    .save-btn:hover { opacity: 0.9; }
+
+    /* دکمه‌های سریع */
+    .actions-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 8px;
+      padding: 0 20px;
+      margin-top: 18px;
+    }
+    .action-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 6px;
+      text-decoration: none;
+      color: #cbd5e1;
+      font-size: 11px;
+    }
+    .icon-box {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: #1e293b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: transform 0.15s ease;
+    }
+    .action-item:hover .icon-box { transform: translateY(-3px); }
+
+    /* حوزه‌های تخصصی */
+    .services-tag-wrap {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+    .service-tag {
+      background: rgba(30, 41, 59, 0.8);
+      color: #cbd5e1;
+      font-size: 11.5px;
+      padding: 6px 12px;
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+
+    /* کارت بانکی و پرداخت بیعانه */
+    .bank-card {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95));
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+    .bank-top {
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+      color: #94a3b8;
+      margin-bottom: 12px;
+    }
+    .card-number {
+      direction: ltr;
+      font-family: monospace;
+      font-size: 18px;
+      letter-spacing: 2px;
+      color: #fbbf24;
+      text-align: center;
+      margin-bottom: 10px;
+    }
+    .copy-btn {
+      width: 100%;
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      color: #fff;
+      padding: 9px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 12px;
+    }
+
+    /* لینک لوکیشن */
+    .link-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: rgba(30, 41, 59, 0.8);
+      padding: 12px 14px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: #f8fafc;
+      font-size: 13px;
+      margin-bottom: 8px;
+    }
+
+    /* کیوآرکد */
+    .qr-center {
+      text-align: center;
+    }
+    .qr-img {
+      width: 130px;
+      height: 130px;
+      border-radius: 10px;
+      background: white;
+      padding: 6px;
+      margin: 12px auto;
+    }
+    
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #10b981;
+      color: white;
+      padding: 9px 18px;
+      border-radius: 20px;
+      font-size: 12px;
+      display: none;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="container">
+    <!-- بخش معرفی و پروفایل -->
+    <div class="card-box profile-card">
+      <div class="banner-img"></div>
+      
+      <div class="avatar-wrapper">
+        <div class="avatar">م‌ب</div>
+      </div>
+      
+      <h1>مهسا بهداروندی</h1>
+      <div class="role-title">کارشناس و مشاور تخصصی املاک و مستغلات</div>
+      <div class="phone-display">0919 563 9098</div>
+      <p class="bio-text">
+        مشاوره سرمایه‌گذاری ملکی، مشارکت در ساخت، پیش‌فروش پروژه‌های مدرن ساختمانی و ارزیابی ارزش کارشناسی ملک.
+      </p>
+
+      <!-- دکمه ذخیره مستقیم در مخاطبین -->
+      <button class="save-btn" onclick="saveContact()">
+        📥 ذخیره مستقیم در مخاطبین گوشی
+      </button>
+
+      <!-- دکمه‌های سریع -->
+      <div class="actions-grid">
+        <a href="tel:09195639098" class="action-item">
+          <div class="icon-box">📞</div>
+          <span>تماس</span>
+        </a>
+        <a href="https://wa.me/989195639098" target="_blank" class="action-item">
+          <div class="icon-box">💬</div>
+          <span>واتساپ</span>
+        </a>
+        <a href="https://t.me/username" target="_blank" class="action-item">
+          <div class="icon-box">✈️</div>
+          <span>تلگرام</span>
+        </a>
+        <a href="https://instagram.com/username" target="_blank" class="action-item">
+          <div class="icon-box">📷</div>
+          <span>اینستاگرام</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- حوزه‌های تخصصی املاک -->
+    <div class="card-box">
+      <div style="font-size: 13.5px; font-weight: 700; margin-bottom: 6px;">🏢 حوزه‌های خدمات و پروژه‌ها</div>
+      <div class="services-tag-wrap">
+        <span class="service-tag">مشارکت در ساخت</span>
+        <span class="service-tag">پیش‌فروش برج و واحدهای لوکس</span>
+        <span class="service-tag">مشاوره سرمایه‌گذاری ملکی</span>
+        <span class="service-tag">کارشناسی و قیمت‌گذاری ملک</span>
+      </div>
+    </div>
+
+    <!-- واریز بیعانه -->
+    <div class="card-box bank-card">
+      <div class="bank-top">
+        <span>اطلاعات واریز بیعانه / قرارداد</span>
+        <span>بانک ملت</span>
+      </div>
+      <div class="card-number" id="cardNum">6104-3378-0000-0000</div>
+      <div style="font-size: 12px; color: #cbd5e1; margin-bottom: 12px; text-align: right;">
+        به‌نام: مهسا بهداروندی
+      </div>
+      <button class="copy-btn" onclick="copyCardNumber()">کپی شماره کارت</button>
+    </div>
+
+    <!-- آدرس و ساعات کاری -->
+    <div class="card-box">
+      <div style="font-size: 13.5px; font-weight: 700; margin-bottom: 8px;">📍 آدرس دفتر و ساعات کاری</div>
+      <div style="font-size: 12px; color: #94a3b8; line-height: 1.8; margin-bottom: 12px;">
+        شنبه تا پنجشنبه: ۹:۰۰ الی ۲۰:۰۰<br>
+        نشانی: دفتر مهندسی و مشاورین املاک ...
+      </div>
+      <a href="https://nshn.ir" target="_blank" class="link-row">
+        <span>🗺️ مسیریابی در بلد / نشان</span>
+        <span>←</span>
+      </a>
+    </div>
+
+    <!-- کیوآرکد -->
+    <div class="card-box qr-center">
+      <div style="font-size: 13px; font-weight: 700; color: #e2e8f0;">اسکن جهت اشتراک‌گذاری کارت</div>
+      <img id="qrImage" class="qr-img" alt="QR Code" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com">
+      <button class="copy-btn" onclick="sharePage()">اشتراک‌گذاری لینک صفحه</button>
+    </div>
+  </div>
+
+  <div id="toast" class="toast">شماره کارت کپی شد!</div>
+
+  <script>
+    window.onload = function() {
+      const currentUrl = encodeURIComponent(window.location.href);
+      document.getElementById('qrImage').src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${currentUrl}`;
+    };
+
+    function saveContact() {
+      const vcard = 
+`BEGIN:VCARD
+VERSION:3.0
+FN;CHARSET=UTF-8:مهسا بهداروندی
+ORG;CHARSET=UTF-8:املاک و مستغلات
+TITLE;CHARSET=UTF-8:مشاور املاک و ساخت‌وساز
+TEL;TYPE=CELL:09195639098
+NOTE;CHARSET=UTF-8:مشاور خرید، فروش و مشارکت در ساخت
+END:VCARD`;
+
+      const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8;' });
+      const link = document.createElement('a');
+      link.href = URL.createObjectURL(blob);
+      link.setAttribute('download', 'Mahsa_Behdarvandi.vcf');
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+
+    function copyCardNumber() {
+      const card = document.getElementById("cardNum").innerText.replace(/-/g, '');
+      navigator.clipboard.writeText(card).then(() => {
+        showToast("شماره کارت کپی شد!");
+      });
+    }
+
+    function sharePage() {
+      if (navigator.share) {
+        navigator.share({
+          title: "مهسا بهداروندی | مشاور املاک",
+          url: window.location.href
+        });
+      } else {
+        navigator.clipboard.writeText(window.location.href);
+        showToast("لینک کارت کپی شد!");
+      }
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById("toast");
+      toast.innerText = msg;
+      toast.style.display = "block";
+      setTimeout(() => { toast.style.display = "none"; }, 2500);
+    }
+  </script>
+</body>
+</html>
