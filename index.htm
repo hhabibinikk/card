@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- رفع مشکل عدم نمایش تصاویر -->
+  <meta name="referrer" content="no-referrer">
   <title>مهسا بهداروندی | مشاور و کارشناس املاک و مستغلات</title>
   <style>
     * {
@@ -13,7 +15,7 @@
     }
     body {
       background: linear-gradient(rgba(11, 15, 25, 0.88), rgba(11, 15, 25, 0.94)), 
-                  url('https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
+                  url('bg.jpg') no-repeat center center fixed;
       background-size: cover;
       color: #f1f5f9;
       min-height: 100vh;
@@ -39,7 +41,6 @@
       position: relative;
     }
     
-    /* بنر و پروفایل */
     .profile-card {
       padding: 0 0 20px 0;
       text-align: center;
@@ -48,7 +49,7 @@
       width: 100%;
       height: 165px;
       background-image: linear-gradient(to bottom, rgba(15, 23, 42, 0.15), #141c2e), 
-                        url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1000&q=80');
+                        url('banner.jpg');
       background-size: cover;
       background-position: center;
     }
@@ -98,7 +99,6 @@
       margin-bottom: 18px;
     }
 
-    /* دکمه ذخیره در مخاطبین */
     .save-btn {
       width: calc(100% - 40px);
       margin: 0 auto;
@@ -118,7 +118,6 @@
     }
     .save-btn:hover { opacity: 0.9; }
 
-    /* دکمه‌های سریع */
     .actions-grid {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -149,7 +148,6 @@
     }
     .action-item:hover .icon-box { transform: translateY(-3px); }
 
-    /* حوزه‌های تخصصی */
     .services-tag-wrap {
       display: flex;
       flex-wrap: wrap;
@@ -165,7 +163,6 @@
       border: 1px solid rgba(255, 255, 255, 0.08);
     }
 
-    /* کارت بانکی و پرداخت بیعانه */
     .bank-card {
       background: linear-gradient(135deg, rgba(30, 41, 59, 0.9), rgba(15, 23, 42, 0.95));
       border: 1px solid rgba(245, 158, 11, 0.3);
@@ -197,7 +194,6 @@
       font-size: 12px;
     }
 
-    /* لینک لوکیشن */
     .link-row {
       display: flex;
       align-items: center;
@@ -211,7 +207,6 @@
       margin-bottom: 8px;
     }
 
-    /* کیوآرکد */
     .qr-center {
       text-align: center;
     }
@@ -242,7 +237,6 @@
 <body>
 
   <div class="container">
-    <!-- بخش معرفی و پروفایل -->
     <div class="card-box profile-card">
       <div class="banner-img"></div>
       
@@ -257,12 +251,10 @@
         مشاوره سرمایه‌گذاری ملکی، مشارکت در ساخت، پیش‌فروش پروژه‌های مدرن ساختمانی و ارزیابی ارزش کارشناسی ملک.
       </p>
 
-      <!-- دکمه ذخیره مستقیم در مخاطبین -->
       <button class="save-btn" onclick="saveContact()">
         📥 ذخیره مستقیم در مخاطبین گوشی
       </button>
 
-      <!-- دکمه‌های سریع -->
       <div class="actions-grid">
         <a href="tel:09195639098" class="action-item">
           <div class="icon-box">📞</div>
@@ -283,7 +275,6 @@
       </div>
     </div>
 
-    <!-- حوزه‌های تخصصی املاک -->
     <div class="card-box">
       <div style="font-size: 13.5px; font-weight: 700; margin-bottom: 6px;">🏢 حوزه‌های خدمات و پروژه‌ها</div>
       <div class="services-tag-wrap">
@@ -294,7 +285,6 @@
       </div>
     </div>
 
-    <!-- واریز بیعانه -->
     <div class="card-box bank-card">
       <div class="bank-top">
         <span>اطلاعات واریز بیعانه / قرارداد</span>
@@ -307,7 +297,6 @@
       <button class="copy-btn" onclick="copyCardNumber()">کپی شماره کارت</button>
     </div>
 
-    <!-- آدرس و ساعات کاری -->
     <div class="card-box">
       <div style="font-size: 13.5px; font-weight: 700; margin-bottom: 8px;">📍 آدرس دفتر و ساعات کاری</div>
       <div style="font-size: 12px; color: #94a3b8; line-height: 1.8; margin-bottom: 12px;">
@@ -320,7 +309,6 @@
       </a>
     </div>
 
-    <!-- کیوآرکد -->
     <div class="card-box qr-center">
       <div style="font-size: 13px; font-weight: 700; color: #e2e8f0;">اسکن جهت اشتراک‌گذاری کارت</div>
       <img id="qrImage" class="qr-img" alt="QR Code" src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://github.com">
