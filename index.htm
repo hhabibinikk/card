@@ -3,7 +3,6 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <!-- رفع مشکل عدم نمایش تصاویر -->
   <meta name="referrer" content="no-referrer">
   <title>مهسا بهداروندی | مشاور و کارشناس املاک و مستغلات</title>
   <style>
@@ -99,6 +98,7 @@
       margin-bottom: 18px;
     }
 
+    /* دکمه دانلود مخاطب */
     .save-btn {
       width: calc(100% - 40px);
       margin: 0 auto;
@@ -114,6 +114,7 @@
       align-items: center;
       justify-content: center;
       gap: 8px;
+      text-decoration: none;
       transition: opacity 0.2s;
     }
     .save-btn:hover { opacity: 0.9; }
@@ -224,13 +225,20 @@
       bottom: 24px;
       left: 50%;
       transform: translateX(-50%);
-      background: #10b981;
+      background: #0284c7;
       color: white;
-      padding: 9px 18px;
-      border-radius: 20px;
-      font-size: 12px;
+      padding: 12px 20px;
+      border-radius: 16px;
+      font-size: 12.5px;
+      font-weight: 500;
+      line-height: 1.6;
+      text-align: center;
       display: none;
-      box-shadow: 0 6px 16px rgba(0,0,0,0.4);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.5);
+      z-index: 1000;
+      width: 90%;
+      max-width: 360px;
+      border: 1px solid rgba(255,255,255,0.2);
     }
   </style>
 </head>
@@ -251,9 +259,10 @@
         مشاوره سرمایه‌گذاری ملکی، مشارکت در ساخت، پیش‌فروش پروژه‌های مدرن ساختمانی و ارزیابی ارزش کارشناسی ملک.
       </p>
 
-      <button class="save-btn" onclick="saveToPhone()">
+      <!-- دکمه استاندارد و بدون خطا برای اتصال به فایل مخاطب -->
+      <a href="contact.vcf" download="Mahsa_Behdarvandi.vcf" class="save-btn" onclick="notifyDownload()">
         📥 ذخیره مستقیم در مخاطبین گوشی
-      </button>
+      </a>
 
       <div class="actions-grid">
         <a href="tel:09195639098" class="action-item">
@@ -319,44 +328,14 @@
   <div id="toast" class="toast">شماره کارت کپی شد!</div>
 
   <script>
-    function saveToPhone() {
-  const isAndroid = /Android/i.test(navigator.userAgent);
-
-  if (isAndroid) {
-    // در گوشی‌های اندروید مستقیماً برنامه مخاطبین بدون دانلود فایل باز می‌شود
-    const name = encodeURIComponent("مهسا بهداروندی");
-    const phone = "09195639098";
-    const company = encodeURIComponent("املاک و مستغلات");
-    
-    window.location.href = `intent:#Intent;action=android.intent.action.INSERT;type=vnd.android.cursor.dir/contact;S.name=${name};S.phone=${phone};S.company=${company};end`;
-  } else {
-    // برای آیفون و سایر دستگاه‌ها
-    window.location.href = "contact.vcf";
-  }
-}
     window.onload = function() {
       const currentUrl = encodeURIComponent(window.location.href);
       document.getElementById('qrImage').src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${currentUrl}`;
     };
 
-    function saveContact() {
-      const vcard = 
-`BEGIN:VCARD
-VERSION:3.0
-FN;CHARSET=UTF-8:مهسا بهداروندی
-ORG;CHARSET=UTF-8:املاک و مستغلات
-TITLE;CHARSET=UTF-8:مشاور املاک و ساخت‌وساز
-TEL;TYPE=CELL:09195639098
-NOTE;CHARSET=UTF-8:مشاور خرید، فروش و مشارکت در ساخت
-END:VCARD`;
-
-      const blob = new Blob([vcard], { type: 'text/vcard;charset=utf-8;' });
-      const link = document.createElement('a');
-      link.href = URL.createObjectURL(blob);
-      link.setAttribute('download', 'Mahsa_Behdarvandi.vcf');
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+    // راهنمایی کاربر هنگام دانلود فایل مخاطب
+    function notifyDownload() {
+      showToast("📥 فایل مخاطب دریافت شد؛ لطفاً از پایین صفحه روی «باز کردن (Open)» بزنید تا ذخیره شود.");
     }
 
     function copyCardNumber() {
@@ -382,7 +361,7 @@ END:VCARD`;
       const toast = document.getElementById("toast");
       toast.innerText = msg;
       toast.style.display = "block";
-      setTimeout(() => { toast.style.display = "none"; }, 2500);
+      setTimeout(() => { toast.style.display = "none"; }, 4000);
     }
   </script>
 </body>
