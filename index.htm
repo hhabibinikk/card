@@ -251,10 +251,9 @@
         مشاوره سرمایه‌گذاری ملکی، مشارکت در ساخت، پیش‌فروش پروژه‌های مدرن ساختمانی و ارزیابی ارزش کارشناسی ملک.
       </p>
 
-      <!-- کد جدید و بهینه‌شده -->
-<a href="contact.vcf" class="save-btn" style="text-decoration: none;">
-  📥 ذخیره مستقیم در مخاطبین گوشی
-</a>
+      <button class="save-btn" onclick="saveToPhone()">
+        📥 ذخیره مستقیم در مخاطبین گوشی
+      </button>
 
       <div class="actions-grid">
         <a href="tel:09195639098" class="action-item">
@@ -320,6 +319,21 @@
   <div id="toast" class="toast">شماره کارت کپی شد!</div>
 
   <script>
+    function saveToPhone() {
+  const isAndroid = /Android/i.test(navigator.userAgent);
+
+  if (isAndroid) {
+    // در گوشی‌های اندروید مستقیماً برنامه مخاطبین بدون دانلود فایل باز می‌شود
+    const name = encodeURIComponent("مهسا بهداروندی");
+    const phone = "09195639098";
+    const company = encodeURIComponent("املاک و مستغلات");
+    
+    window.location.href = `intent:#Intent;action=android.intent.action.INSERT;type=vnd.android.cursor.dir/contact;S.name=${name};S.phone=${phone};S.company=${company};end`;
+  } else {
+    // برای آیفون و سایر دستگاه‌ها
+    window.location.href = "contact.vcf";
+  }
+}
     window.onload = function() {
       const currentUrl = encodeURIComponent(window.location.href);
       document.getElementById('qrImage').src = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${currentUrl}`;
